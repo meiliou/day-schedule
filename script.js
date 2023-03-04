@@ -19,6 +19,33 @@ $(function() {
         localStorage.setItem(time, text);
     })
 
+    function timeTracker() {
+        //Need to get the current hour (time count)
+        // var timeNow = 11; //hardcode for testing purposes
+        var timeNow = moment().hour();
+
+        //Need to effect each time block, figure out how with jQuery
+        $(".time-block").each(function () {
+            var blockTime = parseInt($(this).attr("id").split("hour")[1]);
+
+            //Add classes for fill color based on Moment info
+            if (blockTime < timeNow) {
+                $(this).addClass("past");
+                $(this).removeClass("present");
+                $(this).removeClass("future");
+            }
+            else if (blockTime === timeNow) {
+                $(this).removeClass("past");
+                $(this).addClass("present");
+                $(this).removeClass("future");
+            }
+            else {
+                $(this).removeClass("past");
+                $(this).removeClass("present");
+                $(this).addClass("future");
+            }
+        })
+    }
 
     $("#hour09 .description").val(localStorage.getItem("hour09"));
     $("#hour10 .description").val(localStorage.getItem("hour10"));
