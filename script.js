@@ -16,7 +16,7 @@ $(function() {
         var time = $(this).siblings(".description").val().trim();
         
         // save text to local storage
-        localStorage.setItem(time, text);
+        localStorage.setItem(text, time);
     })
 
     function timeTracker() {
